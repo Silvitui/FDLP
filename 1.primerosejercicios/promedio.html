@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promedio</title>
+    <!--El programa demana a l'usuari/ària que introdueixi 3 notes i el programa mostra la mitjana de les 3 notes per pantalla.-->
+</head>
+<body>
+    <h1> Calculamos tu promedio </h1>
+    <p> Introduce tu primera nota : <input type="number" id="nota1"></p>
+    <p> Introduce tu segunda nota : <input type="number" id="nota2"></p>
+    <p> Introduce tu tercera nota : <input type="number" id="nota3"></p>
+        
+    <button onclick="calcularPromedio()"> Calcular </button>
+    <p id="resultado"></p>
+
+        <script>
+
+            function calcularPromedio() {
+                const primeraNota = parseFloat(document.getElementById("nota1").value);
+                const segundaNota = parseFloat(document.getElementById("nota2").value);
+                const terceraNota = parseFloat(document.getElementById("nota3").value);
+                const promedio = (primeraNota + segundaNota + terceraNota) / 3;
+                const mensaje = `El promedio de tus notas es ${promedio.toFixed(2)}`;
+                document.getElementById("resultado").innerHTML = mensaje;
+
+                console.log(`Notas: ${primeraNota}, ${segundaNota},${terceraNota}`);
+                console.log(`Promedio : ${promedio.toFixed(2)}`)
+                
+
+            }
+
+
+
+
+
+
+
+
+
+
+        </script>
+
+
+</body>
+</html>

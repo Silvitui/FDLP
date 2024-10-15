@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>To do List</h1>
+    <label for="opciones">Elige la opción que desees:</label>
+    <select id="opciones">
+      <option value="1">Agregar tareas</option>
+      <option value="2">Ver lista de tareas</option>
+      <option value="3">Eliminar tarea</option>
+      <option value="4">Salir</option>
+    </select>
+    <button onclick="main()">Enviar</button>
+    <p id="resultado"></p>
+
+    <script>
+      const arrayTareas = [];
+      function agregarTarea(nuevaTarea) {
+        if (nuevaTarea) {
+          arrayTareas.push(nuevaTarea);
+          alert("Nueva tarea añadida");
+        } else {
+          alert("No has añadido ninguna tarea;");
+        }
+      }
+
+      function mostrarTarea() {
+        let tareasPendientes = "Lista de tareas pendientes : <br>";
+
+        if (tareasPendientes.length === 0) {
+          alert("No hay tareas pendientes");
+        } else {
+          let i = 1;
+          for (let tareas of arrayTareas) {
+            tareasPendientes += `${i}- ${tareas}`;
+            i++;
+          }
+        }
+        document.getElementById("mostrar").innerHTML = tareasPendientes;
+      }
+
+      function eliminarTarea(tareaAEliminar) {
+        while (isNaN(tareaAEliminar) || tareaAEliminar <= 0 || tareaAEliminar > arrayTareas.length) {
+            tareaAEliminar = parseInt(prompt("Ingresa un número válido."))
+            
+        }
+
+        let borrarTarea = tareaAEliminar - 1;
+        let eliminada = arrayTareas.splice(borrarTarea,1)
+        alert(`Tarea ${eliminada} eliminada`)
+        mostrarTarea() 
+      }
+
+      function salir() {
+        window.close()
+      }
+
+
+      function main() {
+        let opcionSeleccionada = parseInt(document.getElementById("opciones").value)
+        switch(opcionSeleccionada) {
+            case 1 :
+                let nuevaTarea = prompt("Ingresa la nueva tarea")
+                agregarTarea(nuevaTarea)
+             break;
+            case 2 : 
+            mostrarTarea();
+            break;
+            case 3 : 
+            let eliminarTarea = parseInt(prompt("Dime que tarea quieres eliminar por orden de números : 1,2,3..."))
+            eliminarTarea(tareaAEliminar);
+            break;
+            case 4:
+            salir();
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>

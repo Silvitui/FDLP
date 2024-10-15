@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tres números enteros</title>
+    <h1>Jugamos</h1>
+    <h2>Introduce 3 números y te diré cual es más grande, pequeño o si son iguales</h2>
+    <p>Introduce un número : <input type="number"  id="num1"></p>
+    <p>Introduce un segundo número:<input type="number"  id="num2"></p>
+    <p>Introduce un tercer número : <input type="number"  id="num3"></p>
+    <button onclick="comprobacion()">Click Aquí</button>
+    <p id="mensaje"></p>
+    <p id="mensaje2"></p>
+    <p id="mensaje3"></p>
+</head>
+<body>
+    <script>
+             function comprobacion(){    
+            let primerNumero = parseInt(document.getElementById("num1").value);
+            let segundoNumero = parseInt(document.getElementById("num2").value);
+            let tercerNumero = parseInt(document.getElementById("num3").value);
+
+
+        function numeroMasGrande(numero1, numero2, numero3){
+            let resultado = " ";
+            if (numero1 > numero2 && numero1 > numero3){
+                resultat = `${numero1} es más grande`
+            } else if (numero2 > numero1 && numero2 > numero3){
+                resultat = `${numero2} es más grande`;
+            } else { 
+                resultat = `${numero3} es más grande`;
+            }
+            return resultado;
+            
+        }
+        function numeroMasPeque(numero1, numero2, numero3){
+            let resultado = " ";
+            if (numero1 < numero2 && numero1 < numero3){
+                resultado = `${numero1} es más pequeño`;
+            } else if (numero2 < numero1 && numero2 < numero3){
+                resultado = `${numero2} es más pequeño`;
+            } else { 
+                resultado = `${numero3} es más pequeño`;
+            }
+            return resultat;
+            
+        }
+        function numerosIguales(numero1, numero2, numero3){
+            let resultado = " ";
+            if  (numero1 == numero2 && numero2 == numero3) {
+                resultado = "Los tres números son iguales"; 
+            } else if (numero1 == numero3 && numero1 != numero2)  {
+                resultado = `${numero1} y ${numero3} son iguales`;
+            } else if (numero2 == numero3 && numero2 != numero1){
+                resultado = `${numero2} y ${numero3} son iguales`;
+            } else if (numero1 == numero2 && numero2 != numero3) {
+                resultado = `${numero1} y ${numero2} son iguales`;
+            } else {
+                resultado = "No hay ningún número igual";
+            }
+            return resultado;
+            
+            
+        }
+ 
+            
+            
+            document.getElementById("mensaje").innerHTML = numeroMasGrande(primerNumero, segundoNumero, tercerNumero);
+            
+            document.getElementById("mensaje2").innerHTML = numeroMasPeque(primerNumero, segundoNumero, tercerNumero);
+            
+            document.getElementById("mensaje3").innerHTML = numerosIguales(primerNumero, segundoNumero, tercerNumero);
+            
+      }
+
+        
+    </script>
+</body>
+</html>
+
+    
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Bienvenido al rincón espiritual y astrólogico</h1>
+    <p>Introduce tu fecha de nacimiento: <input type="date" id="fecha" /></p>
+    <button onclick="main()">Enviar</button>
+    <p id="resultado"></p>
+
+    <script>
+      function numerologia(fechaUsuario) {
+        let suma = 0;
+        let fecha = fechaUsuario.split("-");
+        let any = fecha[0];
+        let mes = fecha[1];
+        let dia = fecha[2];
+        let partesFecha = dia + mes + any;
+        
+        for (let i = 0; i < partesFecha.length; i++) {
+          suma += parseInt(partesFecha[i]);
+        }
+        console.log("Suma inicial:", suma);
+        return suma;
+      }
+
+      function reducirSuma(suma) {
+        while (suma > 9 && suma !== 11 && suma !== 22 && suma !== 33) {
+          let sumaReducida = 0;
+          let sumaString = suma.toString();
+
+          for (let i = 0; i < sumaString.length; i++) {
+            sumaReducida += parseInt(sumaString[i]);
+          }
+
+          suma = sumaReducida;
+          console.log("Suma reducida:", suma);
+        }
+        return suma;
+      }
+
+      function mensajes(suma) {
+        let mensaje = "";
+        if (suma === 33) {
+          mensaje = `Número maestro 33: Las personas que tienen este número son optimistas, inspiradoras y siempre buscan el bien mayor. Tienen un gran corazón y una gran mente, y quieren compartir su conocimiento, su luz y su amor con los demás. Estas personas no solo sueñan con cambiar el mundo, sino que también tienen la determinación y la capacidad para hacerlo posible. Aunque a veces pueden enfrentarse a la incomprensión o la resistencia de personas que se aferran a lo establecido, el número 33 les recuerda la importancia de encontrar a aquellas personas que comparten su visión.`;
+        } else if (suma === 22) {
+          mensaje = `El número maestro 22: Estas personas son capaces de transformar sus miedos y oscuridad en fuentes de inspiración. No les asusta explorar su yo espiritual y hacer el trabajo interno necesario para integrar todos los aspectos de su personalidad. Aunque a veces puedan proyectar una imagen seria y reservada, es posible que se deba a que están procesando algo profundo en su subconsciente.`;
+        } else if (suma === 11) {
+          mensaje = `El número 11 : Simboliza una conexión espiritual con la fuente de la creación, lo que les permite a estas personas manifestar sus sueños subconscientes en el plano material. El 11 es un número poderoso que integra el significado de los números uno y dos en numerología. Las personas tienen una visión global del cosmos y son enviadas al mundo material para colaborar en su realización. Pueden demorar en encontrar su verdadera esencia, y cada fracaso los acerca más a su objetivo final`;
+        } else if (suma === 9) {
+          mensaje = `El número 9 :Las personas con este número tienen una misión especial: traer la luz de la nueva era a este mundo. Son almas compasivas e idealistas que quieren hacer una diferencia positiva con sus dones y talentos. Su forma de relacionarse con los demás es sincera y profunda, y buscan ofrecer apoyo emocional y espiritual a quienes lo necesitan. Su potencial como líderes, maestros, políticos o activistas es enorme, ya que saben cómo inspirar y movilizar a las masas hacia una causa noble. Sin embargo, también deben tener en cuenta la realidad de sus circunstancias y no perderse en sus visiones.`;
+        } else if (suma === 8) {
+          mensaje = `El número 8 :Su motivación interna les impulsa a demostrar su valor y, por lo general, se ganan la confianza y el aprecio de otras personas ambiciosas. Son líderes entre líderes que saben usar sus habilidades sociales y su inteligencia para afrontar los desafíos de la vida con facilidad. Sin embargo, estas habilidades también pueden tentarles a actuar por egoísmo, y los numerólogos les aconsejan que no dejen que el ego les domine.`;
+        } else if (suma === 7) {
+          mensaje = `El número 7: es el más afortunado de todos. Trae la buena suerte y la energía positiva del siete a todo lo que haces en la vida. Si naciste con este camino de vida, tienes una facilidad natural para lograr tus objetivos. Sea lo que sea que te propongas hacer o aprender, lo haces con gracia y talento. Por eso, puede que te parezca fácil la vida, y que creas que mereces todo lo que tienes`;
+        } else if (suma === 6) {
+          mensaje = `El número 6: Los que tienen este número suelen sentir pasión por las profesiones, donde pueden aplicar sus dones y talentos para mejorar las vidas de las personas que los rodean. Como son idealistas por naturaleza, siempre buscan lo mejor en los demás y se esfuerza por ayudar a las personas que los rodean a desarrollar todo su potencial. No obstante, también pueden sentirse desanimados y decepcionados si perciben que las personas más cercanas a ellos no los aprecian o valoran lo suficiente`;
+        } else if (suma === 5) {
+          mensaje = `Número 5: Estas personas no se resisten al flujo de la vida, sino que se adaptan a él y buscan las oportunidades que se presentan. El número 5 les da la capacidad de aprovechar al máximo las situaciones imprevistas y vivir experiencias extraordinarias. No obstante, también deben tener cuidado con su tendencia a la inestabilidad y el desapego`;
+        } else if (suma === 4) {
+          mensaje = `Número 4: Este número se caracteriza por su esfuerzo y dedicación para alcanzar metas. Su actitud práctica y realista les ayuda a superar los obstáculos y a obtener resultados duraderos. Sin embargo, también pueden ser muy exigentes consigo mismas y caer en la rigidez y el perfeccionismo. Esto puede hacer que se pierdan de disfrutar los momentos simples y felices de la vida`;
+        } else if (suma === 3) {
+          mensaje = `Número 3: Las personas con el camino de vida número 3 tienen un don para la creatividad, la comunicación y la transformación personal. Su facilidad con las palabras les permite adaptarse a diferentes entornos sociales, profesionales y personales a lo largo de su vida. Una de las ventajas es la capacidad de cambiar de dirección cuando sea necesario. Estas personas saben cómo superar los obstáculos y aprovechar las oportunidades. Su creatividad e imaginación son sus grandes fortalezas. No obstante, también pueden tener dificultades para tomar decisiones y mantenerse firmes.`;
+        } else if (suma === 2) {
+          mensaje = `Número 2: Este número representa la sensibilidad, la ternura, la bondad y la cooperación. Se considera el número más psíquico de todos los caminos de vida. Las personas con este número se preocupan por los demás y disfrutan dedicando su energía a las relaciones que aprecian. Su energía es pacífica y diplomática, capaz de crear armonía entre las personas. Aunque son muy emotivas y vulnerables a las críticas, saben cómo balancear las opiniones de los demás con su intuición`;
+        } else if (suma === 1) {
+          mensaje = `Número 1: Las personas que tienen el número 1 como camino de vida se caracterizan por su liderazgo y su creatividad. Representa la iniciativa, la aspiración y el dinamismo, al igual que el primer signo del zodíaco, Aries. Estas personas no se conforman con lo que les ofrece el mundo, sino que buscan realizar sus propios proyectos y contribuir al bien común. Sin embargo, esta actitud valiente y decidida también puede hacerlos actuar de forma precipitada`;
+        } else {
+          mensaje = `El número ${suma} no está definido en esta interpretación de la numerología.`;
+        }
+
+        return mensaje;
+      }
+
+      function main() {
+        let fechaUsuario = document.getElementById("fecha").value;
+        let sumas = numerologia(fechaUsuario);
+        let sumaReducida = reducirSuma(sumas);
+        let tuNumero = mensajes(sumaReducida);
+        document.getElementById("resultado").innerHTML = tuNumero;
+      }
+    </script>
+  </body>
+</html>

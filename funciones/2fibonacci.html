@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Secuencia de Fibonacci</h1>
+    <p>Introduce un número y te daré su secuencia : <input type="number" id="numero"></p>
+    <button onclick="main()">Click aquí</button>
+    <p id="resultado"></p>
+
+    <script>
+
+        function operacionFibonacci(numero) {
+            let suma = 0;
+            let arrayNumeros = [];
+            let n1 = 0;
+            let n2= 1;
+
+            for (let i = 0; i <= numero;i++) {
+               suma = n1 + n2;
+                arrayNumeros.push(n1)
+                n1 = n2;
+                n2 = suma;
+            }
+            return arrayNumeros;
+        }
+
+        function ordenarArray(arrayNumeros) {
+            let arrayNum = arrayNumeros.join(", ")
+            return arrayNum;
+        }
+
+        function main() {
+            let numero = parseInt(document.getElementById("numero").value);
+
+            if (isNaN(numero) || numero <= 0) {
+                alert("Introduce un número válido")
+                return
+            }
+
+            let secuenciaFibonacci = operacionFibonacci(numero)
+            let arrayMostrar = ordenarArray(secuenciaFibonacci)
+            document.getElementById("resultado").innerHTML = arrayMostrar;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiplos</title>
+  </head>
+  <body>
+    
+    <h1>¿Son múltiplos?</h1>
+    <h2>El divisor ha de ser entre 2 y 7</h2>
+    <p>Introduce un número <input type="number" id="numero1" /></p>
+    <p>Introduce un segundo número <input type="number" id="numero2" /></p>
+    <button onclick="multiplos()">Múltiplos</button>
+    <p id="mensaje"></p>
+
+    <script>
+      function multiplos() {
+        let dividendo = parseInt(document.getElementById("numero1").value);
+        let divisor = parseInt(document.getElementById("numero2").value);
+        let resto = dividendo % divisor;
+        let mensaje = "";
+
+        if (divisor >= 2 && divisor <= 7) {
+          if (resto === 0) {
+            mensaje = `El ${dividendo} y el ${divisor} son múltiplos`;
+        
+          } else {
+            mensaje = `El ${dividendo} y el ${divisor} son múltiplos`;
+          }
+        } else {
+          mensaje = "Los números introducidos no son correctos ";
+        }
+        document.getElementById("mensaje").innerHTML = mensaje;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--Crea un programa que sol·liciti a l'usuari/ària quants noms desitja introduir.
+
+Una vegada tenim aquest número, demanarem a l'usuari/ària tants noms de persona com ha dit prèviament i els emmagatzemarem en un Array.
+
+Després, mostrarem per pantalla només els noms que comencen per la lletra “A”.-->
+
+    <h1>Nombres con A</h1>
+    <button onclick="nombres()">Click aquí</button>
+    <p id="mensaje"></p>
+
+    <script>
+      function nombres() {
+        let nombresConA = [];
+        let introducirNombres = 0;
+        let numeroPersonas = 0;
+        let mensaje = "<ul>";
+
+        do {
+          numeroPersonas = parseInt(
+            prompt("¿A cuántas personas quieres introducir?")
+          );
+          if (numeroPersonas <= 0) {
+            alert("Introduce un número válido");
+          }
+        } while (isNaN(numeroPersonas) || numeroPersonas <= 0);
+
+        for (let i = 0; i < numeroPersonas; i++) {
+          introducirNombres = prompt("¿Cuáles son sus nombres?");
+          if (
+            introducirNombres.charAt(0) === "A" ||
+            introducirNombres.toUpperCase()
+          ) {
+            nombresConA.push(introducirNombres);
+            mensaje += `<li>${introducirNombres}</li>`;
+          }
+        }
+
+        mensaje += "</ul>";
+
+        if (nombresConA.length === 0) {
+            mensaje = "No has introducido ningún nombre que empiece por la letra 'A'"
+        }
+
+        document.getElementById("mensaje").innerHTML = mensaje;
+      }
+    </script>
+  </body>
+</html>

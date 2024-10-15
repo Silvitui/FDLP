@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Palabras bonitas</h1>
+    <p>
+      Dime una palabra y te diré si es bonita....<input type="text" id="palabra" /></p>
+    <button onclick="palabraBonita()">Click aquí</button>
+    <p id="mensaje"></p>
+
+    <script>
+      function palabraBonita() {
+        let palabra = document.getElementById("palabra").value;
+        let longitudPalabra = palabra.length;
+        let letraInicial = palabra.charAt().toUpperCase();
+
+        if (!palabra) {
+          alert("Introduce una palabra por favor");
+        } else if (
+          (letraInicial === "H" && longitudPalabra === 9) ||
+          (letraInicial === "P" && longitudPalabra === 5)
+        ) {
+          document.getElementById("mensaje").innerHTML = `La palabra ${palabra} es bonita`;
+        } else {
+         document.getElementById("mensaje").innerHTML = `La palabra ${palabra} no es bonita`;
+        };
+      }
+    </script>
+  </body>
+</html>

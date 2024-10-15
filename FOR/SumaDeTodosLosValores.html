@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Suma de los valores entre dos números</h1>
+    <p>Introduce un primer número : <input type="number" id="numero1" /></p>
+    <p>Introduce un segundo número : <input type="number" id="numero2" /></p>
+    <button onclick="calcular()">Calcular</button>
+    <p id="mensaje"></p>
+
+    <script>
+      function calcular() {
+        let num1 = parseInt(document.getElementById("numero1").value);
+        let num2 = parseInt(document.getElementById("numero2").value);
+        let suma = 0;
+
+        if (num1 < num2) {
+          for (let i = num1; i <= num2; i++) {
+            suma += i;
+          }
+        } else if (num1 > num2) {
+          for (let i = num1; i >= num2; i--) {
+            suma += i;
+          }
+        } else {
+          suma += num1;
+        }
+
+        document.getElementById("mensaje").innerHTML = suma;
+      }
+    </script>
+  </body>
+</html>

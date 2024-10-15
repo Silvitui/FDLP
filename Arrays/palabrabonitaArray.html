@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Palabras bonitas...</h1>
+    <button onclick="bonitas()">Click aquí</button>
+    <p id="mensaje"></p>
+
+    <script>
+      function bonitas() {
+        let palabraUsuario = "";
+        let palabrasBonitas = [];
+        let mensajes = "<ul>";
+
+        do {
+          palabraUsuario = prompt("Dime 3 palabras bonitas que empiecen por 'H' y tengan 9 letras, o que empiecen por 'P' y tengan 5 letras");
+          let longitudPalabra = palabraUsuario.length;
+          let letraInicial = palabraUsuario.charAt(0).toUpperCase();
+
+          if (palabrasBonitas.includes(palabraUsuario)) {
+            alert("La palabra ya está repetida, elige otra.");
+          } else if(
+            (longitudPalabra === 9 && letraInicial === "H") ||
+            (longitudPalabra === 5 && letraInicial === "P")
+          ) {
+            palabrasBonitas.push(palabraUsuario);
+            mensajes += `<li>${palabraUsuario}</li>`;
+          } else {
+            alert("La palabra debe empezar por H y tener 9 letras o por P y tener 5 letras");
+          }
+        } while (palabrasBonitas.length < 3);
+
+        mensajes += "</ul>";
+        document.getElementById("mensaje").innerHTML = mensajes;
+      }
+    </script>
+  </body>
+</html>

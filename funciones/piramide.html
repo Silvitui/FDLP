@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dibuja una pirámide</title>
+</head>
+<body>
+    <h1> Pirámide </h1>
+    <p>Introduce la longitud para tu pirámide : <input type="number" id="numero"></p>
+    <button onclick="main()">Dibuja</button>
+    <p id="resultado"></p>
+    
+    <script>
+
+        function dibujo1(num) {
+            let mostrar = "";
+            for (let i = 0; i <= num;i++){
+                for (let j = 0; j < i;j++) {
+                    mostrar += "* "
+                }
+                mostrar += "<br>"
+            }
+            return mostrar;
+
+        }
+
+            function dibujo2(numero) {
+                let mostrar = "";
+                for (let i = numero ; i >= 0;i--) {
+                    for (let j =0; j < i ; j ++) {
+                        mostrar += "* "
+                    }
+                    mostrar += "<br>"
+                }
+
+                return mostrar;
+
+            }
+
+            function main() {
+                let numero = parseInt(document.getElementById("numero").value);
+                let resultado = "";
+                
+                let piramide1 = dibujo1(numero);
+                let piramide2 = dibujo2(numero);
+                resultado = `${piramide1}${piramide2} `
+                document.getElementById("resultado").innerHTML = resultado;
+            }
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

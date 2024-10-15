@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="comanda.css">
+</head>
+<body>
+    <div class="form"> 
+        <h1> Verifica tu pedido</h1>
+      <label for="plato"> Escoge el plato que te guste </label>
+        <select id="plato">
+            <option value="1"> Carne </option>
+            <option value="2"> Pasta (Con gluten)</option>
+            <option value="3"> Risotto (Con lactosa)</option>
+        </select>
+        <br>
+
+        <h3> ¿Alguna preferencia o intolerancia?</h3>
+        <input type="checkbox" id="vegano" >
+        <label for="vegano">Vegano</label>
+        <br>
+
+        <input type="checkbox" id="celiaco">
+        <label for="celiaco"> Intolerancia al gluten</label>
+        <br>
+
+        <input type="checkbox" id="lactosa">
+        <label for="lactosa"> Intolerancia a la lactosa </label>
+        <br>
+        <br>
+        <button onclick="comprobarPedido()"> Enviar </button>
+    </div>
+ 
+ <br>
+        
+        <p class="mensaje" id="mensaje"></p>
+
+        <script>
+
+            function comprobarPedido() {
+                let platoSeleccionado = parseInt(document.getElementById("plato").value);
+                let esVegano = document.getElementById("vegano").checked;
+                let sinGluten = document.getElementById("celiaco").checked;
+                let sinLactosa = document.getElementById("lactosa").checked;
+
+                let mensaje = "Pedido correcto";
+
+
+                if (
+                    (platoSeleccionado === 1 && esVegano) ||
+                    (platoSeleccionado === 3 && esVegano) ||
+                    (platoSeleccionado === 2 && sinGluten) ||
+                    (platoSeleccionado === 3 && sinLactosa)
+                )  {
+                    mensaje = "Usted no puede comer este plato"
+                }
+                
+
+            document.getElementById("mensaje").textContent = mensaje;
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+    
+</body>
+</html>

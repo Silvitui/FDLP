@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--Crea una funciò que ha de rebre com a paràmetres els costats d'un triangle. La funció ha de retornar un missatge indicant si el triangle és equilàter, isòsceles o escalè.-->
+  </head>
+  <body>
+    <h1>Triangle</h1>
+    <p>
+      Introduce la longitud de los lados del triángulo que quieres comprobar
+    </p>
+    <p>Primera longitud: <input type="number" id="numero1" /></p>
+    <p>Segunda longitud: <input type="number" id="numero2" /></p>
+    <p>Tercera longitud <input type="number" id="numero3" /></p>
+    <button onclick="main()">Enviar</button>
+    <p id="respuesta"></p>
+
+    <script>
+      const  dibujarTriangulo = (num1, num2, num3) =>  {
+        let respuesta = "";
+
+        if (isNaN(num1) || isNaN(num2) || isNaN(num3) || num1 <= 0 || num2 <= 0 || num3 <= 0) {
+          alert("Introduce un número válido");
+        } else if (num1 === num2 && num2 === num3) {
+          respuesta = "El triángulo es equilátero";
+        } else if (num1 === num2 || num2 === num3 || num1 === num3) {
+            respuesta = "El triángulo es isósceles"
+        } else {
+            respuesta = "El triángulo es escaleno"
+        }
+
+        document.getElementById("respuesta").innerHTML = respuesta;
+      }
+
+      const  main = () => {
+        let num1 = parseInt(document.getElementById("numero1").value);
+        let num2 = parseInt(document.getElementById("numero2").value);
+        let num3 = parseInt(document.getElementById("numero3").value);
+        let respuesta = "";
+        document.getElementById("respuesta").innerHTML = respuesta;
+
+        dibujarTriangulo(num1, num2, num3);
+      }
+    </script>
+  </body>
+</html>

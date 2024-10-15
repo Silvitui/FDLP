@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Practicando...</h1>
+    <button onclick="practicando()">Click aqui y te diré todo lo que he logrado...</button>
+    <p id="mensaje"></p>
+
+    <script>
+
+        function practicando() {
+
+            const MISLOGROS = ["APROBAR FDLP"," APROBAR ESPECIALIZACIÓN REACT","MUCHO AMOR","SALUD MENTAL","TRABAJO EN META","MUCHO DINERO","UNA CASA INCREÍBLE","UNA PROTECTORA DE ANIMALES"];
+
+
+            let texto = "";
+
+            MISLOGROS.forEach(logro => {
+                texto += `${logro}<br>`
+            })
+            document.getElementById("mensaje").innerHTML = texto;
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>¿Es palíndromo?</h1>
+    <p>
+      Introduce una frase o palabra y te diré si es palindromo
+      <input type="text" id="palabra" />
+    </p>
+    <button onclick="comprobar()">Enviar</button>
+    <p id="mostrar"></p>
+
+    <script>
+        function esPalindromo(texto) {
+        let respuesta = document.getElementById("mostrar")
+        let resultado = ""
+        let palabraEditada = editarTexto(texto);
+        let palabraAlreves = palabraEditada.split("").reverse().join("");
+
+        if (palabraEditada === palabraAlreves) {
+          resultado = `Si, la frase ${palabraAlreves} es un palindromo`;
+        } else {
+          resultado = "No no es un palíndromo";
+        }
+        return respuesta.innerHTML = resultado;
+      }
+
+      function editarTexto(text) {       
+        return text.toLowerCase().replace(/[^a-z0-9áàéèíòóúü]/g, "");
+    
+      }
+
+      function comprobar(){
+        let texto = document.getElementById("palabra").value;
+        esPalindromo(texto)
+      }
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Adivina un número...</h1>
+    <button onclick="adivinar()">Adivina</button>
+    <p id="mensaje"></p>
+    <script>
+        function adivinar() {
+            let numeroPc = Math.ceil((Math.random() * 500));
+            let cancelar = false;
+            let mensaje = "";
+    
+            while (!cancelar) {
+                let numeroUsuario = parseInt(prompt("Dime un número del 1 al 500 o 0 para salir"));
+                
+                if (isNaN(numeroUsuario) || numeroUsuario < 0 || numeroUsuario > 500) {
+                    alert("Introduce un número válido");
+                    continue;  
+                }
+    
+                if (numeroUsuario === 0) {
+                    cancelar = true;
+                    mensaje = "No has querido jugar, adiós";
+                    document.getElementById("mensaje").innerHTML = mensaje;
+                    break;
+                }
+    
+                let distancia = Math.abs(numeroUsuario - numeroPc);
+    
+                if (distancia === 0) {
+                    mensaje = `¡Muy bien! Has acertado, el número era ${numeroPc}`;
+                    document.getElementById("mensaje").innerHTML = mensaje;
+                    break;
+                } else if (distancia >= 50) {
+                    mensaje = (numeroUsuario > numeroPc) ? "Frío, tu número es más grande" : "Frío, tu número es más pequeño";
+                } else if (distancia >= 15) {
+                    mensaje = (numeroUsuario > numeroPc) ? "Tibio, tu número es más grande" : "Tibio, tu número es más pequeño";
+                } else {
+                    mensaje = (numeroUsuario > numeroPc) ? "Caliente, tu número es más grande" : "Caliente, tu número es más pequeño";
+                }
+    
+                alert(mensaje);
+            }
+        }
+    </script>
+    
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

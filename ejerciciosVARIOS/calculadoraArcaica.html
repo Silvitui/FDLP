@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Calculadora arcaica</h1>
+    <p>Introduce un número : <input type="number" id="numero1" /></p>
+    <p>Introduce un segundo número : <input type="number" id="numero2" /></p>
+
+    <label for="operacion">¿Qué operación deseas realizar?</label>
+    <select id="operacion">
+      <option value="sumar">Sumar</option>
+      <option value="restar">Restar</option>
+      <option value="multiplicar">Multiplicar</option>
+      <option value="dividir">Dividir</option>
+      <option value="modulo">Modulo</option>
+    </select>
+    <button onclick="main()">Calcular</button>
+    <p id="resultado"></p>
+
+    <script>
+      function sumar(numero1,numero2 = 0) {
+        return numero1 + numero2;
+      }
+
+      function restar(num1,num2) {
+        return num1 - num2;
+      }
+
+      function multiplicar(num1,num2) {
+        return num1 * num2;
+      }
+      function dividir(dividendo,divisor) {
+        if (divisor === 0) {
+            alert("No se puede dividir por 0 ")
+        } else {
+            return dividendo / divisor;
+        }
+    }
+        function modulo(num1,num2) {
+            if (num2 === 0) {
+                alert("El segundo número no puede ser 0")
+                regresarResiduo = "Incorrecto"
+            } else {
+                return num1 % num2;
+            }
+        }
+
+        function main() {
+        let num1 = parseFloat(document.getElementById("numero1").value);
+        let num2 = parseFloat(document.getElementById("numero2").value);
+        let operacion = document.getElementById("operacion").value;
+        let resultado = 0;
+
+        if (isNaN(num1) || isNaN(num2)) {
+          alert("Introduce un número válido");
+        } else {
+          switch (operacion) {
+            case "sumar":
+              resultado = sumar(num1);
+              break;
+            case "restar":
+              resultado = restar(num1,num2);
+              break;
+            case "multiplicar":
+              resultado = multiplicar(num1,num2);
+              break;
+            case "dividir":
+              resultado = dividir(num1,num2);
+              break;
+            case "modulo":
+              resultado = modulo(num1,num2);
+              break;
+          }
+          document.getElementById("resultado").innerHTML = `El resultado es ${resultado}`
+        }
+      }
+      
+    </script>
+  </body>
+</html>

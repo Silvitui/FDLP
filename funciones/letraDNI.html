@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comprobar DNI</title>
+  </head>
+  <body>
+    <input type="text" id="numero" placeholder="Introduce el número de DNI" />
+    <input type="text" id="letra" placeholder="Introduce la letra del DNI" />
+    <button onclick="main()">Comprobar DNI</button>
+    <div id="resultado"></div>
+
+    <script>
+      function mostrar(mensaje) {
+        let mostrarMensaje = document.getElementById("resultado");
+        alert(mensaje);
+        mostrarMensaje.innerHTML = mensaje;
+      }
+
+      function comprobarLetraDni(numeroDni, letraDni) {
+        let arrayLetra = [
+          "T",
+          "R",
+          "W",
+          "A",
+          "G",
+          "M",
+          "Y",
+          "F",
+          "P",
+          "D",
+          "X",
+          "B",
+          "N",
+          "J",
+          "Z",
+          "S",
+          "Q",
+          "V",
+          "H",
+          "L",
+          "C",
+          "K",
+          "E",
+        ];
+
+        if (numeroDni.toString().length !== 8) {
+          mostrar("El número del DNI debe tener 8 dígitos.");
+          return;
+        }
+
+        let calculoResto = numeroDni % 23;
+        let letraExacta = arrayLetra[calculoResto];
+
+        if (letraDni.toUpperCase() === letraExacta) {
+          mostrar(`Sí, la letra de tu DNI es ${letraExacta}`);
+        } else {
+          mostrar(`No, la letra de tu DNI es ${letraExacta}`);
+        }
+      }
+
+      function main() {
+        let numeroDni = parseInt(document.getElementById("numero").value);
+        let letraDni = document.getElementById("letra").value;
+
+        if (isNaN(numeroDni)) {
+          mostrar("Por favor, introduce un número válido.");
+          return;
+        }
+
+        comprobarLetraDni(numeroDni, letraDni);
+      }
+    </script>
+  </body>
+</html>

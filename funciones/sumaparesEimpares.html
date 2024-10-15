@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--Donat un array de números, el programa ha de mostrar la suma de tots els nombres parells i la suma de tots els números imparells.
+
+-->
+  </head>
+  <body>
+    <h1>Suma de todos los pares e impares</h1>
+    <button onclick="main()">Enviar</button>
+    <p id="resultado"></p>
+
+    <script>
+      function bucleNumeros() {
+        const arrayNumeros = [
+          1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+          21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+        ];
+        let pares = [];
+        let impares = [];
+        for (let i = 0; i < arrayNumeros.length; i++) {
+          if (arrayNumeros[i] % 2 === 0) {
+
+            pares.push(arrayNumeros[i]);
+          } else {
+            impares.push(arrayNumeros[i]);
+          }
+        }
+
+        return { pares, impares }; 
+      }
+
+      function sumaNumeros(arrayResultados) {
+        let arrayPares = arrayResultados.pares; 
+        let arrayImpares = arrayResultados.impares; 
+        let sumaPares = 0;
+        let sumaImpares = 0;
+
+        arrayPares.forEach((element) => {
+          sumaPares += element; 
+        });
+        arrayImpares.forEach((element) => {
+          sumaImpares += element; 
+        });
+
+        return { sumaPares, sumaImpares }; 
+      }
+
+      function main() {
+        const resultados = bucleNumeros(); 
+        const sumas = sumaNumeros(resultados); 
+        document.getElementById(
+          "resultado"
+        ).innerHTML = `Suma de pares: ${sumas.sumaPares}. Suma de impares: ${sumas.sumaImpares}`; }
+
+   
+  
+    </script>
+  </body>
+</html>

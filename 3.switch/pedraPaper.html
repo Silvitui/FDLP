@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piedra, Papel o Tijera</title>
+  </head>
+  <body>
+    <h1>Juego: Piedra, Papel o Tijera</h1>
+
+    <button onclick="jugar('piedra')">Piedra</button>
+    <button onclick="jugar('papel')">Papel</button>
+    <button onclick="jugar('tijera')">Tijera</button>
+
+    <h2 id="resultado"></h2>
+
+    <script>
+      function jugar(jugadaUsuario) {
+        let numRandom = Math.floor(Math.random() * 3) + 1;
+        let jugadaPc;
+        let resultado;
+
+        switch (numRandom) {
+          case 1:
+            jugadaPc = "piedra";
+            break;
+          case 2:
+            jugadaPc = "papel";
+            break;
+          case 3:
+            jugadaPc = "tijera";
+            break;
+        }
+
+        if (jugadaUsuario === jugadaPc) {
+          resultado = `¡Empate! Ambos eligieron ${jugadaUsuario}.`;
+        } else if (
+          (jugadaUsuario === "piedra" && jugadaPc === "tijera") ||
+          (jugadaUsuario === "papel" && jugadaPc === "piedra") ||
+          (jugadaUsuario === "tijera" && jugadaPc === "papel")
+        ) {
+          resultado = `¡Ganaste! ${jugadaUsuario} gana a ${jugadaPc}.`;
+        } else {
+          resultado = `Perdiste... ${jugadaComputadora} gana a ${jugadaPc}.`;
+        }
+
+        document.getElementById("resultado").innerText = resultado;
+      }
+    </script>
+  </body>
+</html>

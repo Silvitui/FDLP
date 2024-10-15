@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Te dibujaré un cuadrado...</h1>
+    <p>Introduce le medida de tu dibujo <input type="number" id="numero" /></p>
+    <p> Introduce el carácter que prefieras <input type="text" id="caracter"/></p>
+    <button onclick="dibujar()">Dibuja</button>
+    <p id="mostrar"></p>
+
+    <script>
+      function dibujar() {
+        let medidaCuadrado = parseInt(document.getElementById("numero").value);
+        let caracterCuadrado = document.getElementById("caracter").value;
+        let mostrar = "";
+
+        for (let i = 0; i < medidaCuadrado; i++) {
+          for (let j = i; j < medidaCuadrado; j++) {
+            mostrar += caracterCuadrado  ;
+          }
+          mostrar += `<br>`;
+        }
+
+        document.getElementById("mostrar").innerHTML = mostrar;
+      }
+    </script>
+  </body>
+</html>

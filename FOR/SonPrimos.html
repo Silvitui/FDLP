@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function esPrimo(numero) {
+        if (numero < 2) {
+          return false;
+        }
+        for (let i = 2; i <= Math.sqrt(numero); i++) {
+          if (numero % i === 0) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function numerosPrimos() {
+        let primos = [];
+        // Recorremos los números del 100 al 2
+        for (let num = 100; num >= 2; num--) {
+          if (esPrimo(num)) {
+            primos.push(num); // Si es primo, lo añadimos al array
+          }
+        }
+        return primos;
+      }
+
+      function main() {
+        let primosDel100Al2 = numerosPrimos();
+        console.log("Números primos del 100 al 2:", primosDel100Al2);
+      }
+
+      // Llamamos a la función main para ejecutar todo el proceso
+      main();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palabras</title>
+  <style>
+    body { width: 90%; margin: 0 auto; }
+    label { width: 19em; display: inline-block; }
+    input { width: 4em; }
+  </style>
+</head>
+<body>
+  <h1>Incluir palabras con las siguientes condiciones:</h1>
+  <p>
+    <label for="INICIAL">Indica la letra inicial de las palabras:</label>
+    <input type="text" id="INICIAL" maxlength="1">
+  </p>
+  <p>
+    <label for="LONGITUD">Indica la longitud de las palabras:</label>
+    <input type="number" id="LONGITUD">
+  </p>
+  <p>
+    <label for="NUM_PALABRAS">Indica el número de palabras en el array:</label>
+    <input type="number" id="NUM_PALABRAS">
+  </p>
+  <p>
+    <button type="button" onclick="addWords()">Agregar palabras</button>
+  </p>
+  <p id="mostrar"></p>
+
+  <script>
+    function addWords() {
+      const MOSTRAR = document.getElementById('mostrar');
+
+      let letraInicial = document.getElementById('INICIAL').value.toUpperCase();
+      let longitud = parseInt(document.getElementById('LONGITUD').value);
+      let numPalabras = parseInt(document.getElementById('NUM_PALABRAS').value);
+      const arrayPalabras = [];
+      let palabra = '';
+
+      console.log('Palabras introducidas');
+
+      while (arrayPalabras.length < numPalabras) {
+        // Dentro del bucle preguntar con prompt
+        palabra = prompt('Escribe una palabra para ver si cumple las condiciones').toUpperCase();
+        console.log(palabra);
+
+        if (!(palabra.charAt(0) == letraInicial && palabra.length == longitud)) {
+          alert(`La palabra ${palabra} no cumple las condiciones`);
+        } else {
+          if (arrayPalabras.includes(palabra)) {
+            alert(`La palabra ${palabra} está repetida`);
+          } else {
+            arrayPalabras.push(palabra);
+            alert(`La palabra ${palabra} SI cumple las condiciones`);
+            console.log('Agregada al array');
+          }
+        }
+      }
+
+      MOSTRAR.innerHTML = `Las palabras seleccionadas son:<br>❤ ${arrayPalabras.join('<br>❤ ')}`;
+    }
+  </script>
+</body>
+</html>

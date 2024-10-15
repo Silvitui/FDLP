@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let listaDeCompras = [];
+      let opciones
+
+      function mostrarMenu() {
+         opciones = prompt(
+          "¿QUé opción deseas realizar? \n1. Ver lista de tareas \n2. Agregar artículo \n3. Eliminar artículo \n4.Salir"
+        );
+        return opciones;
+      }
+
+      function verLista() {
+        if (listaDeCompras.length === 0) {
+          alert("La lista de compras está vacía.");
+        } else {
+          let lista = listaDeCompras
+            .map((articulo, index) => `${index + 1}. ${articulo}`)
+            .join("\n");
+          alert(`Lista de compras:\n${lista}`);
+        }
+      }
+
+      function agregarArticulo() {
+        let articulo = prompt(
+          "Ingresa el nombre del artículo que deseas añadir");
+        if (articulo) {
+          listaDeCompras.push(articulo);
+          alert(`${articulo} ha sido añadido correctamente.`);
+        } else {
+          alert("No se añadió nada a la lista.");
+        }
+      }
+
+      function eliminarArticulo() {
+        let articulo = prompt("Ingrese el artículo a eliminar");
+        let indice = listaDeCompras.indexOf(articulo);
+        if (indice !== -1) {
+          listaDeCompras.splice(indice, 1);
+          alert(`${articulo} ha sido eliminado correctamente.`);
+        } else {
+          alert("No se encontró el artículo en la lista.");
+        }
+      }
+
+      function ejecutarPrograma() {
+        while (opciones !== "4") {
+          opciones = mostrarMenu();
+
+          switch (opciones) {
+            case "1":
+              verLista();
+              break;
+            case "2":
+              agregarArticulo();
+              break;
+            case "3":
+              eliminarArticulo();
+              break;
+            case "4":
+              alert("Gracias por usar la lista de compras.");
+              break;
+            default:
+              alert("Opción no válida, por favor elija de nuevo.");
+          }
+        }
+      }
+
+      ejecutarPrograma();
+    </script>
+  </body>
+</html>

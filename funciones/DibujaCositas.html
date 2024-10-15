@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <h1>Dibujando...</h1>
+  <p>Introduce la longitud de tu dibujo :<input type="number" id="numero"></p>
+  <p>Introduce el carácter que desees : <input type="text" id="caracter"></p>
+  <button onclick="main()">Dibuja</button>
+   <p id="mostrar"></p>
+
+   <script>
+
+function dibujando(longitud,caracter) {
+    let resultado ="";
+
+    for (let i = 0; i < longitud;i++) {
+        for (let j = i; j < longitud;j++) {
+        resultado += caracter;}
+         resultado += "<br>"
+    }
+
+
+
+    for (let i = 0; i <= longitud;i++) {
+        for (let j = 0; j < i;j++) {
+            resultado += caracter;
+        }
+        resultado += "<br>"
+    }
+   
+
+
+    return resultado;
+}
+
+
+  function main() {
+    let longitud = parseInt(document.getElementById("numero").value);
+    let caracter = document.getElementById("caracter").value;
+    let dibujo = dibujando(longitud,caracter);
+    document.getElementById("mostrar").innerHTML = dibujo;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   </script>
+</body>
+</html>

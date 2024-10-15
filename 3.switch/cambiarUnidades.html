@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--Passar de metres a peus.
+
+De peus a metres.
+
+De metres a iardes.
+
+De iardes a metres.-->
+    <h1>Conversor de unidades</h1>
+    <p>Introduce un número : <input type="number" id="num" /></p>
+    <br />
+    <label for="convertir">Selecciona la opción que desees</label>
+    <select id="convertir">
+      <option value="pies-metros">De pies a metros</option>
+      <option value="metros-pies">De metros a pies</option>
+      <option value="metros-yardas">De metros a yardas</option>
+      <option value="yardas-metros">Yardas a metros</option>
+    </select>
+    <button onclick="conversor()">Convertir</button>
+    <p id="resultado"></p>
+    <script>
+      function conversor() {
+        let numero = parseInt(document.getElementById("num").value);
+        let convertir = document.getElementById("convertir").value;
+        let resultado = "";
+
+        switch (convertir) {
+          case "pies-metros":
+            let piesMetros = (numero * 0.3048).toFixed(2);
+            resultado = `${numero} pies  son ${piesMetros} metros `;
+            break;
+          case "metros-pies":
+            let metrosPies = (numero * 3.2808399).toFixed(2);
+            resultado = `${numero} metros  son ${metrosPies} pies`;
+            break;
+          case "metros-yardas":
+            let metrosYardas = (numero * 1.0936133).toFixed(2);
+            resultado = `${numero} metros  son ${metrosYardas} yardas`;
+            break;
+          case "yardas-metros":
+            let yardasMetros = (numero * 0.9144).toFixed(2);
+            resultado = `${numero} yardas son ${yardasMetros} metros`;
+            break;
+        }
+
+        document.getElementById("resultado").innerHTML = resultado;
+      }
+    </script>
+  </body>
+</html>

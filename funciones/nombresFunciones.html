@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nombres con A (versión funciones normales)</title>
+</head>
+<body>
+  <h1> Nombres con A (versión funciones normales)</h1>
+  <button onclick="main()">Nombres que empiezan por 'A'</button>
+  <p id="mostrar"></p>
+
+  <script>
+    
+    function obtenerCantidadNombres() {
+      let cantidadNombres = parseInt(prompt("¿Cuántos nombres quieres introducir?"));
+      return cantidadNombres;
+    }
+
+    function obtenerNombres(cantidadNombres) {
+      const arrayNombres = [];
+      for (let i = 0; i < cantidadNombres; i++) {
+        let nombreUsuario = prompt("Escribe el nombre de la persona:");
+        arrayNombres.push(nombreUsuario);
+      }
+      return arrayNombres;
+    }
+
+    function filtrarNombresConA(arrayNombres) {
+      let nombresConA = "";
+      for (let i = 0; i < arrayNombres.length; i++) {
+        if (arrayNombres[i].charAt(0).toUpperCase() === "A") {
+          nombresConA += `${arrayNombres[i]}<br>`;
+        }
+      }
+      return nombresConA;
+    }
+
+    function main() {
+      const mostrarMensaje = document.getElementById("mostrar");
+      let cantidadNombres = obtenerCantidadNombres();
+      let arrayNombres = obtenerNombres(cantidadNombres);
+      let nombresConA = filtrarNombresConA(arrayNombres);
+
+    
+      mostrarMensaje.innerHTML = nombresConA
+        ? `Los nombres que empiezan por 'A' son:<br>${nombresConA}`
+        : `No hay nombres que empiecen por 'A'`;
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

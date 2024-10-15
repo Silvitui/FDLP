@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Reserva para actuación</h1>
+    <button onclick="reservar()">Reserva aquí</button>
+    <p id="mensaje"></p>
+
+    <script>
+      function reservar() {
+        let numeroDeNenes = 0;
+        let sumaDeEdades = 0;
+        let introducirEdades = 0;
+
+        do {
+          numeroDeNenes = parseInt(
+            prompt("¿A cuántos niños quieres inscribir?")
+          );
+        } while (isNaN(numeroDeNenes) || numeroDeNenes <= 0);
+
+        for (let i = 0; i < numeroDeNenes; i++) {
+          introducirEdades = parseInt(prompt("¿Qué edades tienen los niños?"));
+          if (introducirEdades >= 5 && introducirEdades <= 12) {
+            sumaDeEdades += introducirEdades;
+          } else {
+            alert("Las edades de los niños han de ser entre 5 y 12");
+          }
+        }
+
+        let mediaDeEdad = (sumaDeEdades / numeroDeNenes).toFixed(2);
+
+        document.getElementById(
+          "mensaje"
+        ).innerHTML = `La media de edad de los niños es de ${mediaDeEdad}`;
+      }
+    </script>
+  </body>
+</html>

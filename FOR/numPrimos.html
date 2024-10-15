@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Números Primos</title>
+</head>
+<body>
+    <h1>Verificador de Números Primos</h1>
+    <p>Introduce un número entero positivo mayor que 1: <input type="number" id="numero"></p>
+    <button onclick="verificarPrimo()">¿Es primo?</button>
+    <p id="resultado"></p>
+    
+    <script>
+        function verificarPrimo() {
+            let numero = parseInt(document.getElementById("numero").value);
+            let resultado = "";
+
+            if (isNaN(numero) || numero < 2) {
+                resultado = "Por favor, ingrese un número entero positivo mayor que 1.";
+            } else {
+                let esPrimo = true;
+
+                for (let i = 2; i <= Math.sqrt(numero); i++) {
+                    if (numero % i === 0) {
+                        esPrimo = false;
+                        break;
+                    }
+                }
+
+                resultado = `${numero} ${esPrimo ? 'es' : 'no es'} un número primo.`;
+            }
+
+            document.getElementById('resultado').textContent = resultado;
+        }
+
+
+        
+    </script>
+</body>
+</html>

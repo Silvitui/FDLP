@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripción a la actuación</title>
+</head>
+<body>
+    <h1>Inscripción a la actuación</h1>
+    <button onclick="inscribirPersonas()">Inscribirse</button>
+    <p id="resultado"></p>
+
+    <script>
+        function inscribirPersonas() {
+            let cantidadPersonas = parseInt(prompt("¿Cuántas personas desean inscribirse?"));
+            if (isNaN(cantidadPersonas) || cantidadPersonas <= 0) {
+                alert("Por favor, introduce un número válido de personas.");
+                return;
+            }
+
+            let listaDia = [];  
+            let listaNoche = []; 
+
+            for (let i = 1; i <= cantidadPersonas; i++) {
+                let preferencia = prompt(`¿La persona ${i} prefiere asistir de día o de noche? (Escribe 'día' o 'noche')`).toLowerCase();
+
+                if (preferencia === 'día' || preferencia === 'dia') {
+                    listaDia.push(`Persona ${i}`);
+                } else if (preferencia === 'noche') {
+                    listaNoche.push(`Persona ${i}`);
+                } else {
+                    alert("Opción no válida, se tomará como que prefiere de día.");
+                    listaDia.push(`Persona ${i}`);
+                }
+            }
+
+            let resultado = `<h2>Inscritos para la actuación de día:</h2><ul>`;
+            for (let i = 0; i < listaDia.length; i++) {
+                resultado += `<li>${listaDia[i]}</li>`;
+            }
+            resultado += `</ul><h2>Inscritos para la actuación de noche:</h2><ul>`;
+            for (let i = 0; i < listaNoche.length; i++) {
+                resultado += `<li>${listaNoche[i]}</li>`;
+            }
+            resultado += `</ul>`;
+
+            document.getElementById("resultado").innerHTML = resultado;
+        }
+    </script>
+</body>
+</html>

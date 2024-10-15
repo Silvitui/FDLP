@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Te dibujo un triángulo</h1>
+    <p>
+      Introduce la longitud que quieres para tu triángulo :
+      <input type="number" id="numero" />
+    </p>
+    <button onclick="main()">Enviar</button>
+    <p id="resultado"></p>
+    <script>
+      const dibujarTriangulo = (numero) => {
+        let respuesta = "";
+        for (let i = 0; i <= numero; i++) {
+          for (let j = 0; j < i; j++) {
+            respuesta += "*";
+          }
+          respuesta += "<br>";
+        }
+
+        return respuesta;
+      };
+
+      const main = () => {
+        let numero = parseInt(document.getElementById("numero").value);
+        let respuesta = "";
+
+        if (isNaN(numero)) {
+          alert("Introduce un número válido");
+          return;
+        }
+        respuesta = dibujarTriangulo(numero);
+        document.getElementById("resultado").innerHTML = respuesta;
+      };
+    </script>
+  </body>
+</html>

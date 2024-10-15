@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+</head>
+<body style="text-align: center; border: black solid thick;">
+    <h1> Calculamos su doble y triple</h1>
+    <p> Introduce un número : <input type="number" id="primerNumero"></p>
+    <button onclick="calcularDobleTriple()"> Calcular </button>
+    <p id="mensaje"></p>
+
+    <script>
+
+
+        function calcularDobleTriple() {
+            let primerNumero = parseInt(document.getElementById("primerNumero").value);
+            let numeroDoble = (primerNumero * 2);
+            let numeroTriple = (primerNumero * 3);
+            let mensaje = `El doble del número que has introducido es ${numeroDoble} y su triple es ${numeroTriple}`;
+            document.getElementById("mensaje").innerHTML = mensaje;
+            console.log("mensaje", mensaje);
+            alert(mensaje);
+            };
+
+
+    </script>
+
+    
+</body>
+</html>

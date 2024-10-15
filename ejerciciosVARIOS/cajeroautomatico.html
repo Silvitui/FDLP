@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cajero Automático</title>
+</head>
+<body>
+    <h1>Cajero automático</h1>
+
+    <script>
+        let saldo = 1000;
+
+        function mostrarMenu() {
+            let opcion = prompt("¿Qué operación desea hacer? \n1. Consultar saldo \n2. Depositar dinero \n3. Retirar dinero \n4. Salir");
+            return opcion;
+        }
+        
+        function consultarSaldo() {
+            alert(`Su saldo actual es de ${saldo}`);
+        }
+
+        function depositarDinero() {
+            let deposito = parseInt(prompt("¿Cuánto dinero desea introducir?"));
+            if (isNaN(deposito) || deposito <= 0) {
+                alert("Ingrese una cantidad válida");
+            } else {
+                saldo += deposito;
+                alert(`Su saldo actual es de ${saldo}`);
+            }
+        }
+
+        function retirarDinero() {
+            let retiro = parseInt(prompt("¿Cuánto dinero desea retirar?"));
+            if (isNaN(retiro) || retiro <= 0) {
+                alert("Ingrese una cantidad válida a retirar");
+            } else if (retiro > saldo) {
+                alert(`No puedes retirar esa cantidad, tu saldo actual es de ${saldo}`);
+            } else {
+                saldo -= retiro;  
+                alert(`Su retiro ha sido realizado con éxito. Su nuevo saldo es de ${saldo}`);
+            }
+        }
+
+        function iniciarCajero() {
+            let salir = false;
+
+            while (!salir) {
+                let opcion = mostrarMenu();  
+
+                switch (opcion) {
+                    case "1": 
+                        consultarSaldo();
+                        break;
+                    case "2":
+                        depositarDinero();
+                        break;
+                    case "3":
+                        retirarDinero();
+                        break;
+                    case "4":
+                        alert("Gracias por usar el cajero, adiós");
+                        salir = true;
+                        window.close();
+                        break;
+                    default:
+                        alert("Opción no válida, por favor elija una opción entre 1 y 4"); 
+                }  
+            } 
+        }
+
+        iniciarCajero();
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Pintura</title>
+    <!--Escriu un programa JavaScript que calculi els litres de pintura necessaris per a pintar una paret rectangular.
+    Un litre de pintura cobreix aproximadament, 12 m² en una sola mà.
+    Crear una constant, Cobertura a Litros (recordar les convencions de noms) per a guardar la dada de cobertura de la pintura (12 m²).
+
+    Hauràs de demanar a l'usuari/ària:
+
+    L'alt i ample de la paret (multiplicant sabràs l'àrea de la mateixa).
+    El nombre de mans a aplicar.
+    Mostra en pantalla els litres de pintura a utilitzar.-->
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif;">
+    <p>Indica el alto de la pared <input type="number" id="altoPared" ></p>
+    <p>Indica el ancho de la pared <input type="number" id="anchoPared" ></p>
+    <p>Indica el número de capas a aplicar en la pared <input type="number" id="numeroCapas" ></p>
+    <hr>
+    <button onclick="calcularLitros()">Cálculo de pintura</button>
+    <hr>
+    <p id="mensaje"></p>
+    <script>
+        function calcularLitros(){
+           let altoPared = parseFloat(document.getElementById("altoPared").value);
+           let anchoPared = parseFloat(document.getElementById("anchoPared").value);
+           let numeroCapas = parseFloat(document.getElementById("numeroCapas").value);
+           let areaPared = (altoPared * anchoPared);
+           let litrosPintura = ((areaPared / 12)* numeroCapas).toFixed(2);
+    
+            
+          let mensaje = `Para pintar tu pared vas a necesitar ${litrosPintura} litros de pintura`
+            document.getElementById("mensaje").innerHTML = mensaje;
+            console.log('mensaje', mensaje);
+            alert(mensaje);
+        }
+
+    </script>
+</body>
+</html>

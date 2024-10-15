@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--Crea un programa que sol·liciti a l'usuari/ària que introdueixi un número de l'1 al 10 i mostri per pantalla el seu equivalent en lletres (per exemple, 1 es mostraria com "u", 2 com "dos", etc.).-->
+  </head>
+  <body>
+    <h1>Traductor de números</h1>
+    <p>Introduce un número: <input type="number" id="numero" /></p>
+    <button onclick="traductor()">Click aquí</button>
+    <p id="mensaje"></p>
+
+    <script>
+      function traductor() {
+        const numero = parseInt(document.getElementById("numero").value);
+        let mensaje = "";
+
+        if (!numero) {
+        } else if (numero === 1) {
+          document.getElementById("mensaje").textContent = `Uno`;
+        } else if (numero === 2) {
+          document.getElementById("mensaje").textContent = `Dos`;
+        } else if (numero === 3) {
+          document.getElementById("mensaje").textContent = `Tres`;
+        } else if (numero === 4) {
+          document.getElementById("mensaje").textContent = `Cuatro`;
+        } else if (numero === 5) {
+          document.getElementById("mensaje").textContent = `Cinco`;
+        } else if (numero === 6) {
+          document.getElementById("mensaje").textContent = `Seis`;
+        } else if (numero === 7) {
+          document.getElementById("mensaje").textContent = `Siete`;
+        } else if (numero === 8) {
+          document.getElementById("mensaje").textContent = `Ocho`;
+        } else if (numero === 9) {
+          document.getElementById("mensaje").textContent = `Nueve`;
+        } else if (numero === 10) {
+          document.getElementById("mensaje").textContent = `Diez`;
+        } else {
+          mensaje = `Solo es posible del 1 al 10`;
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--Para probar  la tipografía de una empresa, se desea desarrollar un programa que determine si una frase en un pangrama o no lo es.  Para ello Deberá solicitarse mediante un input una frase con un número máximo de 300 caracteres y que pueda contener espacios, minusculas
+    y mayusculas. Las minusculas y mayusculas de una misma letra, son consideradas la misma letra.
+    Crea una funcion denominada esUnPangrama que deberá evaluar la frase y determinar si la misma es un pangrama o no y las letras
+    del alfabeto que faltan -->
+  </head>
+  <body>
+    <h1>¿Es un pangrama?</h1>
+    <p>Un pangrama es un texto, que usa todas las letras del alfabeto.</p>
+    <p>
+      Introduce una frase y te diré si lo es :
+      <input type="text" id="texto" maxlength="300" />
+    </p>
+    <button onclick="esUnPangrama()">Enviar</button>
+    <p id="resultado"></p>
+    <script>
+      const arrayAbecedario = (texto) => {
+        const arrayAbc = [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J",
+          "K",
+          "L",
+          "M",
+          "N",
+          "O",
+          "P",
+          "Q",
+          "R",
+          "S",
+          "T",
+          "U",
+          "V",
+          "W",
+          "X",
+          "Y",
+          "Z",
+        ];
+        let textoEditado = texto.toUpperCase().replace(/[^A-Z]/g, "");
+
+        const arrayLetrasQueFaltan = [];
+        const arrayLetrasIngresadas = [];
+        for (let i = 0; i < arrayAbc.length; i++) {
+          if (textoEditado.includes(arrayAbc[i])) {
+            arrayLetrasIngresadas.push(arrayAbc[i]);
+          } else {
+            arrayLetrasQueFaltan.push(arrayAbc[i]);
+          }
+        }
+
+
+        if (arrayLetrasIngresadas.length === arrayAbc.length) {
+          mensaje = `El texto "${texto}"" es un pangrama`;
+        } else {
+          mensaje = `El texto "${texto}" no es un pangrama, las letras que falta son ${arrayLetrasQueFaltan.join(
+            ", "
+          )}`;
+        }
+
+        return mensaje;
+      };
+
+      const esUnPangrama = () => {
+        let texto = document.getElementById("texto").value;
+        let mensaje = document.getElementById("resultado");
+        let frasePangrama = arrayAbecedario(texto);
+        mensaje.innerHTML = frasePangrama;
+
+        
+      };
+    </script>
+  </body>
+</html>

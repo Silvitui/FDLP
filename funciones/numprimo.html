@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>¿Es primo?</h1>
+    <p>
+      Introduce un número y te diré si es primo :
+      <input type="number" id="numero" />
+    </p>
+    <button onclick="comprobar()">Enviar</button>
+    <p id="mensaje"></p>
+
+    <script>
+      function esPrimo(numero) {
+        let i = 2;
+        while (i < numero) {
+          if (numero % i === 0) {
+            return false;
+          }
+          i++;
+        }
+        return true;
+      }
+
+      function comprobar() {
+        let numero = parseInt(document.getElementById("numero").value);
+        let mensaje = document.getElementById("mensaje");
+
+        if (isNaN(numero)) {
+          mensaje.innerHTML = "Introduce un número válido";
+        } else if (numero > 1) {
+          if (esPrimo(numero)) {
+            mensaje.innerHTML = `Sí, el número ${numero} es primo`;
+          } else {
+            mensaje.innerHTML = `No, el número ${numero} no es primo`;
+          }
+        } else {
+          mensaje.innerHTML =
+            "Los números menores o iguales a 1 no son primos.";
+        }
+      }
+    </script>
+  </body>
+</html>

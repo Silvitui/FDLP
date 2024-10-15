@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--Crea un programa que sol·liciti a l’usuari/ària que introdueixi el seu nom i el nombre d’anys que porta treballant en una empresa. Després mostra per pantalla el seu nivell d’experiència, segons la següent taula:
+    Menys de 2 anys: Nivell principiant.
+
+    Entre 2 i 4 anys: Nivell intermedi.
+
+    Més de 4 i fins a 7 anys: Nivell avançat.
+
+    Més de 7 i fins a 10 anys: Nivell expert.
+
+    Més de 10 anys: Nivell Gurú.-->
+  </head>
+  <body style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+    <h1> <span style="border: thick black solid;">¿Qué experiencia tienes?</span></h1>
+    <p>Introduce tu nombre: <input type="text" id="nombre" /></p>
+    <p>Introduce los años que llevas en la empresa:<input type="number" id="tiempo" /></p>
+    <button onclick="experiencia()">Enviar</button>
+    <p id="resultado"></p>
+
+    <script>
+      function experiencia() {
+        let nombre = document.getElementById("nombre").value;
+        let tiempo = parseInt(document.getElementById("tiempo").value);
+        let mensaje = `Hola ${nombre}, `;
+        let resultado = "";
+
+        if (!nombre || !tiempo || isNaN(tiempo)) {
+          alert("Introduce los campos correctamente");
+        } else if (tiempo <= 2) {
+          resultado = `${mensaje} tienes nivel principiante`;
+        } else if (tiempo > 2 && tiempo <= 4) {
+          resultado = `${mensaje} tienes nivel intermedio`;
+        } else if (tiempo > 4 && tiempo <= 7) {
+          resultado = `${mensaje} tienes nivel avanzado`;
+        } else if (tiempo > 7 && tiempo <= 10) {
+          resultado = `${mensaje} tienes nivel experto `;
+        } else {
+          resultado = `${mensaje} tienes nivel gurú`;
+        }
+
+
+
+
+
+
+        document.getElementById("resultado").innerHTML = resultado;
+      }
+    </script>
+  </body>
+</html>

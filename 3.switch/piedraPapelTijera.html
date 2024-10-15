@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piedra, Papel o Tijera</title>
+  </head>
+  <body>
+    <h1>Juego: Piedra, Papel o Tijera</h1>
+
+    <label for="jugadaUsuario">Elige tu jugada:</label>
+    <select id="jugadaUsuario">
+      <option value="piedra">Piedra</option>
+      <option value="papel">Papel</option>
+      <option value="tijera">Tijera</option>
+    </select>
+
+    <button onclick="jugar()">Jugar</button>
+
+    <p id="resultado"></p>
+
+    <script>
+      function jugar() {
+        let jugadaUsuario = document.getElementById("jugadaUsuario").value;
+        let tiradas = ["piedra", "papel", "tijera"];
+        let jugadaPc = tiradas[Math.floor(Math.random() * 3)];
+        let resultado;
+
+        if (jugadaUsuario === jugadaPc) {
+          resultado = `¡Empate!, tu ${jugadaUsuario} y yo ${jugadaPc}`;
+        } else if (
+          (jugadaUsuario === "piedra" && jugadaPc === "tijera") ||
+          (jugadaUsuario === "papel" && jugadaPc === "piedra") ||
+          (jugadaUsuario === "tijera" && jugadaPc === "papel")
+        ) {
+          resultado = `Tu ganas! tu has elegido ${jugadaUsuario} y yo ${jugadaPc}`;
+        } else {
+          resultado = `Perdiste! yo he elegido ${jugadaComputadora} y tu ${jugadaPc}`;
+        }
+
+        document.getElementById("resultado").innerText = resultado;
+      }
+    </script>
+  </body>
+</html>

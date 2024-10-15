@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juego Frío Frío, Caliente Caliente</title>
+  </head>
+  <body>
+    <h1>Juego frío frío, caliente caliente</h1>
+    <button onclick="jugar()">Jugar</button>
+    <p id="mensaje"></p>
+
+    <script>
+      function jugar() {
+        const frioGran = "Frío frío: el número es demasiado grande.";
+        const frioPeque = "Frío frío: el número es demasiado pequeño.";
+        const tebiGran = "Tibio tibio: el número es un poco grande.";
+        const tebiPeque = "Tibio tibio: el número es un poco pequeño.";
+        const calentGran =
+          "Caliente caliente: el número es casi correcto, es demasiado grande.";
+        const calentPeque =
+          "Caliente caliente: el número es casi correcto, es demasiado pequeño.";
+        const mensajeGanaste = "¡Ganaste! Adivinaste el número.";
+
+        let numeroPc = Math.ceil(Math.random() * 500);
+        console.log(numeroPc);
+        let numeroUsuario;
+        let diferencia;
+
+        do {
+          numeroUsuario = parseInt(prompt("Introduce un número del 1 al 500:"));
+        } while (
+          isNaN(numeroUsuario) ||
+          numeroUsuario <= 0 ||
+          numeroUsuario > 500
+        );
+
+        while (numeroUsuario !== numeroPc) {
+          diferencia = numeroPc - numeroUsuario;
+
+          if (Math.abs(diferencia) >= 50) {
+            alert(diferencia > 0 ? frioPeque : frioGran);
+          } else if (Math.abs(diferencia) >= 15) {
+            alert(diferencia > 0 ? tebiPeque : tebiGran);
+          } else {
+            alert(diferencia > 0 ? calentPeque : calentGran);
+          }
+
+          numeroUsuario = parseInt(prompt("Este no es, dime otro número:"));
+          while (
+            isNaN(numeroUsuario) ||
+            numeroUsuario <= 0 ||
+            numeroUsuario > 500
+          ) {
+            numeroUsuario = parseInt(
+              prompt("Introduce un número válido del 1 al 500:")
+            );
+          }
+        }
+
+        alert(mensajeGanaste);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor de números</title>
+</head>
+<body>
+    <h1> Traductor de números </h1>
+    <p>Introduce un número del 0 al 99 y te lo traduciré: <input type="number" id="numero"></p>
+    <button onclick="traducir()">Traducir</button>
+    <p id="mensaje"></p>
+
+    <script>
+
+        function traducir() {
+            let numeroIntroducido = parseInt(document.getElementById("numero").value);
+            let unidadesLetra = ["", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"];
+            let numerosEspeciales = ["diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve"];
+            let decenasLetra = ["", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"];
+            let mensaje = "";
+
+            if (isNaN(numeroIntroducido) || numeroIntroducido < 0 || numeroIntroducido > 99) {
+                mensaje = `Introduce un número que esté en el rango`;
+            } else if (numeroIntroducido === 0) {
+                mensaje = `El número se traduce como "cero"`;
+            } else if (numeroIntroducido >= 10 && numeroIntroducido <= 19) {
+                mensaje = `El número se traduce como "${numerosEspeciales[numeroIntroducido - 10]}"`;
+            } else {
+                let decena = Math.floor(numeroIntroducido / 10);
+                let unidad = numeroIntroducido % 10;
+
+                if (unidad === 0) {
+                    mensaje = `El número se traduce como "${decenasLetra[decena]}"`;
+                } else if (decena === 2) {
+                    mensaje = `El número se traduce como "veinti${unidadesLetra[unidad]}"`; 
+                } else {
+                    mensaje = `El número se traduce como "${decenasLetra[decena]} y ${unidadesLetra[unidad]}"`;
+                }
+            }
+
+            document.getElementById("mensaje").innerHTML = mensaje;
+        }
+
+    </script>
+</body>
+</html>

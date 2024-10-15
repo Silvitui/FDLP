@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Adivina un número...</h1>
+    <button onclick="adivina()">Click aquí</button>
+
+    <script>
+
+        function adivina() {
+            let numeroPersona = parseInt(prompt("Dime un número del 1 al 10"));
+            let numeroPc = Math.ceil(Math.random() * 10);
+
+
+            while (numeroPersona !== numeroPc) {
+                numeroPersona = parseInt(prompt("Este no es, prueba de nuevo"));
+            };
+            alert("Adivinaste!!!")
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

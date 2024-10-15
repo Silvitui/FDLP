@@ -1,0 +1,142 @@
+// Clase Producte - Clase base para todos los productos
+class Producte {
+    constructor(id, nom, preu, quantitatEnEstoc) {
+        this.id = id;
+        this.nom = nom;
+        this.preu = preu;
+        this.quantitatEnEstoc = quantitatEnEstoc;
+    }
+
+    mostrarDetalls() {
+        return `${this.nom} (ID: ${this.id}) - Preu: ${this.preu}€ - Quantitat en estoc: ${this.quantitatEnEstoc}`;
+    }
+}
+
+// Subclase ProducteElectrònic que hereda de Producte
+class ProducteElectrònic extends Producte {
+    constructor(id, nom, preu, quantitatEnEstoc, garantia) {
+        super(id, nom, preu, quantitatEnEstoc);
+        this.garantia = garantia; // Atributo extra
+    }
+
+    mostrarDetalls() {
+        return `${super.mostrarDetalls()} - Garantia: ${this.garantia} anys`;
+    }
+}
+
+// Subclase ProducteRoba que hereda de Producte
+class ProducteRoba extends Producte {
+    constructor(id, nom, preu, quantitatEnEstoc, talla) {
+        super(id, nom, preu, quantitatEnEstoc);
+        this.talla = talla; // Atributo extra
+    }
+
+    mostrarDetalls() {
+        return `${super.mostrarDetalls()} - Talla: ${this.talla}`;
+    }
+}
+
+// Subclase ProducteAliment que hereda de Producte
+class ProducteAliment extends Producte {
+    constructor(id, nom, preu, quantitatEnEstoc, dataCaducitat) {
+        super(id, nom, preu, quantitatEnEstoc);
+        this.dataCaducitat = dataCaducitat; // Atributo extra
+    }
+
+    mostrarDetalls() {
+        return `${super.mostrarDetalls()} - Data de caducitat: ${this.dataCaducitat}`;
+    }
+}
+
+// Clase Client
+class Client {
+    constructor(nom, dni) {
+        this.nom = nom;
+        this.dni = dni;
+        this.productesComprats = []; // Lista de productos comprados
+    }
+
+    comprarProducte(producte) {
+        this.productesComprats.push(producte);
+    }
+
+    mostrarProductesComprats() {
+        if (this.productesComprats.length === 0) {
+            return `${this.nom} no ha comprat cap producte.`;
+        } else {
+            return this.productesComprats.map(p => p.mostrarDetalls()).join('\n');
+        }
+    }
+}
+
+// Clase Botiga
+class Botiga {
+    constructor() {
+        this.productes = []; // Lista de productos en la tienda
+        this.clients = []; // Lista de clientes
+    }
+
+    afegirProducte(producte) {
+        this.productes.push(producte);
+    }
+
+    afegirClient(client) {
+        this.clients.push(client);
+    }
+
+    mostrarProductes() {
+        if (this.productes.length === 0) {
+            return "No hi ha productes disponibles a la botiga.";
+        } else {
+            return this.productes.map(p => p.mostrarDetalls()).join('\n');
+        }
+    }
+
+    mostrarClients() {
+        if (this.clients.length === 0) {
+            return "No hi ha clients.";
+        } else {
+            return this.clients.map(c => `${c.nom} (DNI: ${c.dni})`).join('\n');
+        }
+    }
+}
+
+// Ejemplo de uso
+const botiga = new Botiga();
+
+// Crear productos
+const producte1 = new ProducteElectrònic(1, "Portàtil", 1200, 5, 2);
+const producte2 = new ProducteRoba(2, "Samarreta", 25, 10, "M");
+const producte3 = new ProducteAliment(3, "Pa", 1.5, 20, "2024-12-31");
+
+// Añadir productos a la tienda
+botiga.afegirProducte(producte1);
+botiga.afegirProducte(producte2);
+botiga.afegirProducte(producte3);
+
+// Crear clientes
+const client1 = new Client("Anna", "12345678A");
+const client2 = new Client("Joan", "87654321B");
+
+// Añadir clientes a la tienda
+botiga.afegirClient(client1);
+botiga.afegirClient(client2);
+
+// Simular compras
+client1.comprarProducte(producte1);
+client2.comprarProducte(producte3);
+
+// Mostrar productos en la tienda
+console.log("Productes disponibles a la botiga:");
+console.log(botiga.mostrarProductes());
+
+// Mostrar clientes
+console.log("\nClients de la botiga:");
+console.log(botiga.mostrarClients());
+
+// Mostrar productos comprados por los clientes
+console.log(`\nProductes comprats per ${client1.nom}:`);
+console.log(client1.mostrarProductesComprats());
+
+console.log(`\nProductes comprats per ${client2.nom}:`);
+console.log(client2.mostrarProductesComprats());

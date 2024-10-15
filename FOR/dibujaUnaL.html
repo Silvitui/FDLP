@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dibuja una L</title>
+  </head>
+  <body>
+    <!--Introduïu l'alçada de la L : 5
+
+La base serà  la divisió del nombre entre 2 : (5 / 2) + 1 = 3-->
+    <h1>Dibuja una L</h1>
+    <p>Introduce un número <input type="number" id="numero" /></p>
+    <p>Introduce un carácter : <input type="character" id="caracter" /></p>
+    <button onclick="dibujar()">Dibuja</button>
+    <p id="mostrar"></p>
+
+    <script>
+      function dibujar() {
+        let altura = parseInt(document.getElementById("numero").value);
+        let caracter = document.getElementById("caracter").value;
+        let longitudHorizontal = Math.ceil(altura / 2) + 1;
+        let mostrar = "";
+
+        for (let i = 0; i < altura - 1; i++) {
+          mostrar += `${caracter}<br>`;
+        }
+        for (let i = 0; i < longitudHorizontal; i++) {
+          mostrar += `${caracter}`;
+        }
+
+        document.getElementById("mostrar").innerHTML = mostrar;
+      }
+    </script>
+  </body>
+</html>

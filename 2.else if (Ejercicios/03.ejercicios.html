@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juguemos al frío-caliente</title>
+</head>
+<body>
+    <h2>Tendrás que introducir números hasta que adivines el mío</h2>
+    <h2>Los números deberán estar entre 1 y 500 para poder jugar</h2>
+    <h4>Introduce el número que quieras: <input type="number" id="numUsuario" /></h4>
+    <button onclick="comprobar()">Haz clic para jugar</button>
+    <p id="mensaje"></p>
+
+    <script>
+        let numeroMaquina = Math.floor(Math.random() * 500) + 1; 
+
+        function comprobar() {
+            let numeroUsuario = parseInt(document.getElementById("numUsuario").value);
+            let respuesta = "";
+            let diferencia = Math.abs(numeroMaquina - numeroUsuario); 
+
+            if (isNaN(numeroUsuario) || numeroUsuario < 1 || numeroUsuario > 500) {
+                alert("Por favor, introduce un número válido entre 1 y 500.");
+                return; 
+            }
+
+            if (diferencia >= 50) {
+                respuesta = numeroUsuario > numeroMaquina ? "Frío-frío, el número que debes adivinar es más pequeño" : "Frío-frío, el número que debes adivinar es más grande";
+            } else if (diferencia >= 15) {
+                respuesta = numeroUsuario > numeroMaquina ? "Tibio-tibio, el número que debes adivinar es más pequeño" : "Tibio-tibio, el número que debes adivinar es más grande";
+            } else if (diferencia > 0) {
+                respuesta = numeroUsuario > numeroMaquina ? "Caliente-caliente, el número que debes adivinar es un poco más pequeño" : "Caliente-caliente, el número que debes adivinar es un poco más grande";
+            } else {
+                respuesta = "¡Felicidades! Has acertado el número.";
+            }
+
+            document.getElementById("mensaje").innerText = respuesta;
+
+            if (diferencia === 0) {
+                numeroMaquina = Math.floor(Math.random() * 500) + 1;
+            }
+        }
+    </script>
+</body>
+</html>

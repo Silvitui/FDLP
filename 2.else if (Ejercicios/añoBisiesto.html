@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>¿Es año bisiesto?</h1>
+    <p>Introduce un año : <input type="number" id="año" /></p>
+    <br />
+    <button onclick="calcularAño()">Click aquí</button>
+    <p id="resultado"></p>
+
+    <script>
+      /* REGLAS DE UN AÑO BISIESTO :
+      Aquellos años que son divisibles entre 4, pero no entre 100, son bisiestos.
+      Los años que son divisibles entre 100, pero no entre 400, no son bisiestos.
+      Sin embargo, los años divisibles entre 100 y entre 400 sí que son bisiestos. */
+
+      function calcularAño() {
+        let año = parseInt(document.getElementById("año").value);
+        let resultado =
+          (año % 4 === 0 && año % 100 !== 0) ||
+          (año % 100 === 0 && año % 400 === 0)
+            ? "Sí, es bisiesto"
+            : "No es bisiesto";
+
+        document.getElementById("resultado").innerHTML = resultado;
+      }
+    </script>
+  </body>
+</html>

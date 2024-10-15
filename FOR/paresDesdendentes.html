@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parejos descendentes</title>
+</head>
+<body>
+    <h1> Te diré los números pares del 0 al 100 en orden descendente </h1>
+    <button onclick="numerosPares()">Click aquí</button>
+
+    <p id="mostrar"></p>
+    <script>
+
+        function numerosPares() {
+
+        let pares = "";
+
+         for (let i = 100; i >= 0; i--) {
+            if (i % 2 === 0) {
+
+                pares += `${i}<br>`
+            }
+         }
+
+    document.getElementById("mostrar").innerHTML = pares;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

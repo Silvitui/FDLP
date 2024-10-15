@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--Realitzar un joc per endevinar un nombre aleatori N, entre 1 i 500.
+Si la distància entre el nombre a endevinar i el de l'usuari/ària és de 50 o més, el programa haurà de dir:
+“Fred, fred: el teu número és més gran “ o “Fred, fred: el teu número és més petit “
+Si la distància entre el nombre a endevinar i el de l'usuari/ària està entre 15 i 50, el programa haurà de dir:
+“Tebi, Tebi: el teu número és més gran “ o “Tebi, Tebi: el teu número és més petit “ 
+I si la distància entre el nombre a endevinar i el de l'usuari/ària i si la distància és menor a 15, el programa haurà de dir:
+“Calent, calent: el teu número és més gran “ o “Calent, calent: el teu número és més petit “
+El procés acaba quan l'usuari/ària encerta.-->
+
+    <h1>¿jugamos?</h1>
+    <button onclick="jugar()">play</button>
+
+    <script>
+      function jugar() {
+        let numeroPc = Math.ceil(Math.random() * 500);
+        let numeroUsuario;
+        console.log(numeroPc);
+
+        do {
+          numeroUsuario = parseInt(prompt("Dime un número del 1 al 500"));
+
+          if (
+            isNaN(numeroUsuario) ||
+            numeroUsuario < 1 ||
+            numeroUsuario > 500
+          ) {
+            alert("Por favor, ingresa un número válido entre 1 y 500.");
+          }
+
+          let diferencia = numeroUsuario - numeroPc;
+
+          if (diferencia >= 50) {
+            alert(
+              `Frio frio, el número ${numeroUsuario} es más grande de lo que es`
+            );
+          } else if (diferencia <= -50) {
+            alert(
+              `Frio frio, el número ${numeroUsuario} es más pequeño de lo que es `
+            );
+          } else if (diferencia >= 15 && diferencia <= 50) {
+            alert(
+              `Tibio tibio, el número ${numeroUsuario} es más grande de lo que es`
+            );
+          } else if (diferencia <= -15 && diferencia >= -50) {
+            alert(
+              `Tibio tibio, el número ${numeroUsuario} es más pequeño de lo que es`
+            );
+          } else if (diferencia < 15 && diferencia > 0) {
+            alert(
+              `Caliente caliente, el número ${numeroUsuario} es más grande de lo que es `
+            );
+          } else if (diferencia < -15 && diferencia < 0) {
+            alert(
+              `Caliente caliente, el número ${numeroUsuario} es más pequeño de lo que es`
+            );
+          }
+        } while (numeroUsuario !== numeroPc);
+
+        alert(`Muy bieen! El número era ${numeroUsuario}`);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Descubre tu tipo de personalidad</h1>
+    <p>
+      Introduce tu nombre y te diré tu tipo de personalidad:
+      <input type="text" id="nombre" />
+    </p>
+    <button onclick="main()">Enviar</button>
+    <p id="resultado"></p>
+
+    <script>
+            function calculoSuma(nombreUsuario) {
+           
+              const arrayAbc = [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F",
+                "G",
+                "H",
+                "I",
+                "J",
+                "K",
+                "L",
+                "M",
+                "N",
+                "O",
+                "P",
+                "Q",
+                "R",
+                "S",
+                "T",
+                "U",
+                "V",
+                "W",
+                "X",
+                "Y",
+                "Z",
+              ];
+              let suma = 0;
+              for (let i = 0; i < nombreUsuario.length; i++) {
+                let letra = nombreUsuario[i];
+                let posicion = arrayAbc.indexOf(letra);
+
+                if (posicion !== -1) {
+                  let valor = (posicion % 9) + 1;
+                  suma += valor;
+                  console.log(`Letra: ${letra}. Valor: ${valor}`);
+                  console.log(`Suma total : ${suma}`);
+                }
+
+             
+              }
+              return suma;
+            }
+
+            function reduccionNumeros(suma) {
+              while (suma > 9 && suma !== 11 && suma !== 22 && suma !== 33) {
+                let sumaReducida = 0;
+                let sumaString = suma.toString();
+
+                for (let i = 0; i < sumaString.length; i++) {
+                  sumaReducida += parseInt(sumaString[i]);
+                }
+
+                suma = sumaReducida;
+                console.log("Suma reducida:", suma);
+              }
+              return suma;
+            }
+
+            function mostrarTexto(numero) {
+              let mensaje = "";
+              if (numero === 1) {
+                  mensaje = "1: proactividad, innovación, liderazgo, independencia, consecución de metas, originalidad."
+              } else if (numero === 2) {
+                  mensaje = "2: cooperación, adaptación, consideración hacia otros, colaboración, mediación"
+              } else if (numero === 3){
+                  mensaje = "3: expresión, expresión verbal, socialización, las artes, entusiasmo."
+              } else if (numero === 4) {
+                  mensaje = "4: fundamento, orden, servicio, tesón, crecimiento continuo."
+              } else if (numero === 5) {
+                  mensaje = "5: expansión, visión, aventura, uso constructivo de la libertad."
+              } else if (numero === 6) {
+                  mensaje = "6: responsabilidad, protección, educación, comunidad, balance, solidaridad."
+              } else if (numero === 7) {
+                  mensaje = "7: análisis, comprensión, conocimiento, conciencia, estudio, reflexión."
+              } else if (numero === 8) {
+                  mensaje = "8: esfuerzos prácticos, clasismo, deseo de poder, objetivos materiales altos."
+              } else if (numero === 9) {
+                  mensaje = "9: altruismo, generosidad, desinterés, obligaciones, expresión creativa."
+              } else if (numero === 11) {
+                  mensaje = "11: plano espiritual más alto, intuición, iluminación, idealismo."
+              } else if (numero === 22) {
+                  mensaje = "22: el maestro edificador, grandes esfuerzos, fuerza poderosa, liderazgo."
+              } else if (numero === 33) {
+                  mensaje = "33: Altruista, compasivo, inspirador, visionario, Empático, Generoso,espiritual"
+              }
+
+              return mensaje;
+     
+            }
+
+
+            function main() {
+              let nombreUsuario = document
+                .getElementById("nombre")
+                .value.toUpperCase();
+           
+
+              let suma = calculoSuma(nombreUsuario)
+              let numeroFinal = reduccionNumeros(suma)
+              let mensaje = mostrarTexto(numeroFinal)
+
+              document.getElementById("resultado").innerHTML = mensaje;
+            }
+    </script>
+  </body>
+</html>
