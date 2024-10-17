@@ -1,0 +1,29 @@
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #ffe4e1; 
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #a31c3c; 
+    font-size: 2rem;
+  }
+  
+  button {
+    background-color: #a4435a; 
+    color: #fff; 
+    padding: 15px 10px;
+    margin: 5px;
+    border-radius: 50px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+
+  .botones {
+    text-align: center;
+    margin: 20px 0; 
+}
+
