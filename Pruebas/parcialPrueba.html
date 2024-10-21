@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <!--  Escribe una función que reciba como parametro 2 arrays (arr 1 y arr 2) de la misma longitud. El patrón de combinación es el siguiente:  Para cada par de elementos se debe calcular el resto según las siguientes fórmulas: -Si ambos números son pares, el resultado será la suma de los dos números. - Si ambos números son impares el resultado será la multiplicación. - Si uno de los números es par y el otro es impar será la resta. Condiciones: - La función debe aceptar 2 parametros (arr1 y arr2) que serán arrays de la misma longitud. Si no fuera el caso, se avisará al usuario. - La función debe combinar los elementos de ambos arrays siguiendo el patrón especificado. - La función debe devolver un nuevo array que contengan los resultados de la combinación según el patron. - El nuevo array resultante debe tener la misma longitud de los arrays de entrada. Los arrays de entrada no deben ser modificados. - Si los valores del array resultante tienen un signo negativo, este será eliminado.-->
+  <body>
+    <h1>Pruebas</h1>
+    <p>
+      Introduce 6 números separados por comas : <input type="text" id="arr1" />
+    </p>
+    <p>
+      Introduce 6 números separados por comas : <input type="text" id="arr2" />
+    </p>
+    <button onclick="main()">Enviar</button>
+    <p id="resultado"></p>
+
+    <script>
+      const logica = (array1, array2) => {
+        let arrayVacio = [];
+
+        for (let i = 0; i < array1.length; i++) {
+          let num1 = array1[i];
+          let num2 = array2[i]; 
+          let combinaciones = 0;
+          if (num1 % 2 === 0 && num2 % 2 === 0) {
+            combinaciones = num1 + num2;
+          } else if (num1 % 2 !== 0 && num2 % 2 !== 0) {
+            combinaciones = num1 * num2;
+          } else {
+            combinaciones = num1 - num2;
+          }
+          combinaciones = Math.abs(combinaciones);
+          arrayVacio.push(combinaciones);
+        }
+       
+        return arrayVacio;
+      };
+
+      const main = () => {
+        let arr1 = document.getElementById("arr1").value;
+        let arr2 = document.getElementById("arr2").value;
+
+        let array1 = arr1.split(",").map(Number);
+        let array2 = arr2.split(",").map(Number);
+
+        if (array1.length !== array2.length) {
+      return "Los arrays deben tener la misma longitud.";
+    }
+
+    let resultado = logica(array1,array2)
+
+        document.getElementById("resultado").innerHTML = "Resultado: " + resultado.join(", ");
+      };
+    </script>
+  </body>
+</html>

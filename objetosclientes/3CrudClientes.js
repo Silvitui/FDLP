@@ -2,7 +2,7 @@ const arrayClientes = [];
 
 const cliente1 = new Cliente("12345678A", 27, "ECUATORIANA", 9);
 const cliente2 = new Cliente("87654321B", 37, "ITALIANA", 5);
-const cliente3 = new Cliente("123456456C", 30, "ALEMANA", 12);
+const cliente3 = new Cliente("123456456C", 30, "COLOMBIANA", 12);
 
 arrayClientes.push(cliente1);
 arrayClientes.push(cliente2);
@@ -41,7 +41,7 @@ const agregarCliente = () => {
     alert("Ingrese un número válido");
     return;
   }
-  const nuevoCliente = new Cliente(dni, edad, nacionalidad, numeroVuelos);
+  const nuevoCliente = new Cliente (dni, edad, nacionalidad, numeroVuelos); 
   arrayClientes.push(nuevoCliente);
   alert(`Nuevo cliente añadido correctamente \n${nuevoCliente.toString()}`);
   console.log("Nuevo cliente agregado:",nuevoCliente)
@@ -65,7 +65,7 @@ const consultarDatos = () => {
   }
 
 };
-
+  
 const modificarDatos = () => {
   let dni = prompt("Ingrese el DNI del cliente que desea modificar").toUpperCase();
   if (dni.length !== 9) {
@@ -87,10 +87,10 @@ const modificarDatos = () => {
       prompt("Ingrese el nuevo número de vuelos que ha realizado")
     );
 
-    arrayClientes[posicion].setDni(nuevoDni);
-    arrayClientes[posicion].setEdad(nuevaEdad);
-    arrayClientes[posicion].setNacionalidad(nuevaNacionalidad);
-    arrayClientes[posicion].setNumeroVuelos(nuevoNumeroVuelos);
+    arrayClientes[posicion].dni = nuevoDni; 
+    arrayClientes[posicion].edad = nuevaEdad;
+    arrayClientes[posicion].nacionalidad = nuevaNacionalidad;
+    arrayClientes[posicion].numeroVuelos = nuevoNumeroVuelos;
     alert(`Datos del cliente modificados correctamente : \n${arrayClientes[posicion].toString()}`
     );
   }
@@ -113,7 +113,7 @@ const eliminarCliente = () => {
 }
 
 const salir = () => {
- if (confirm("¿Seguro que desea salir")) {
+ if (confirm("¿Seguro que desea salir?")) {
   alert("¡Gracias por usar el sistema!. Adiós")
  }
   window.close()
